@@ -26,6 +26,7 @@ compare(3, a=2)
 ################################################################################
 # Interactive visuals
 # install.packages("shiny"); library(shiny)
+# Check the link out!
 # http://shiny.rstudio.com/gallery/
 ################################################################################
 iris
@@ -81,10 +82,11 @@ for (i in unique(race)) {
 # Set default repo for CRAN.
 options(repos = c(CRAN = "http://cran.r-project.org/"))
 # How to download packages.
-install.packages("dplyr")
+install.packages(c("dplyr", "ggplot2"))
 library(dplyr)
 library(ggplot2)
 
+# Awesome dplyr syntax!
 dat %>%
     group_by(race, pres04) %>%
     filter(pres04 %in% c(1,2)) %>%
@@ -131,6 +133,7 @@ topic.proportions.df <- melt(cbind(data.frame(topic.proportions),
                              variable.name="topic",
                              id.vars = "document")
 
+# Plot!
 qplot(topic, value, fill=document, ylab="proportion",
       data=topic.proportions.df, geom="bar", stat="identity") +
   theme(axis.text.x = element_text(angle=90, hjust=1)) +
@@ -192,9 +195,10 @@ symbols(x0, circles=rep(0.5, nrow(x0)), inches=FALSE, bg="yellow")
 symbols(x1, squares=rep(1, nrow(x1)), inches=FALSE, add=TRUE, bg="red")
 contour(x1.grid, x2.grid, zz, add=T, levels=2)
 
-# making this slightly more difficult
+# making this slightly more difficult:
+# Let's change a few of the labels on the points.
 set.seed(42)
 data[sample(which(data$Y == 0), 3), "Y"] <- 1
 data[sample(which(data$Y == 1), 3), "Y"] <- 0
-# rewriting as functions
-
+# Exercise: try running all the models again, using this slightly "perturbed"
+# data.
