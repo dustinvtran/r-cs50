@@ -148,7 +148,7 @@ library(e1071)
 library(randomForest)
 
 # Data
-data <- read.csv("data/data.txt")
+data <- read.csv("data/simulated.csv")
 head(data, 20)
 
 x0 <- data[data$Y == 0, 1:2]
